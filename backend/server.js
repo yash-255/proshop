@@ -7,6 +7,7 @@ import connectDB from './config/db.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import ProductRoute from './routes/ProductRoute.js';
 import userRoute from './routes/userRoutes.js';
+import orderRoute from './routes/orderRoutes.js';
 
 const port=process.env.PORT || 4000;
 
@@ -25,6 +26,7 @@ app.get('/',(req,res) =>{
 });
 app.use('/api/products',ProductRoute);
 app.use('/api/users',userRoute);
+app.use('/api/orders',orderRoute);
 app.use(notFound);
 app.use(errorHandler);
 
