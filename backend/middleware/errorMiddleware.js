@@ -8,14 +8,7 @@ const notFound = (req, res, next) => {
 const errorHandler = (err, req, res, next) => {
     let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
     let message = err.message;
-
-    // check for mongoose bad object id
-                                                                
-    if (err.name ==='CastError' && err.kind ==='ObjectId') {
-        message='Resource not found';
-        statusCode=404;
-        
-    }
+    
     res.status(statusCode).json({
         message,
         stack: process.env.NODE_ENV ==='production' ? '🥞' :err.stack,
